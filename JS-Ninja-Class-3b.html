@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninja Class I</title>
+	<script type="text/javascript">
+
+	class Ninja {
+			constructor(name) {
+			this.name = name;
+			this.health = 100;
+			this.speed = 3;
+			this.strength = 3;
+
+			}
+			showStats() {
+				console.log("Name: " + this.name + ", Health: " + this.health + ", Speed: " + this.speed + ", Strength: " + this.strength);
+			
+			}
+
+			sayName() {
+				console.log("My name is " + this.name);
+			
+		}
+
+		drinkSake() {
+			this.health += 10;
+			return this;
+}
+}
+	class Sensei extends Ninja {
+		constructor(name) {
+			super(name);
+			this.speed = 10;
+			this.strength = 10;
+			this.wisdom = 10;
+			this.health = 200;
+		}
+
+
+		
+		speakWisdom() {
+			super.drinkSake();
+			console.log("What one programmer can do in one month, \ntwo programmers can do in two months.");
+		}
+}
+		const ninja1 = new Ninja("Goemon");
+		ninja1.sayName();
+		ninja1.showStats();
+
+
+// example output
+const superSensei = new Sensei("Master Splinter");
+superSensei.speakWisdom();
+// -> "What one programmer can do in one month, two programmers can do in two months."
+superSensei.showStats();
+// -> "Name: Master Splinter, Health: 210, Speed: 10, Strength: 10"
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
