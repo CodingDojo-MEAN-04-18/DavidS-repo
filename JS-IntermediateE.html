@@ -1,0 +1,61 @@
+<html>
+<head>
+  <script>
+
+function starString(n){
+
+//This declares the variable mystar as string *
+ let mystar = ("*");
+
+//This sets i to 1 instead of 0 in order to render correctly
+ for(let i = 1; i < n; i++){ 
+
+//This takes the variable and appends * to string   
+   mystar = mystar + "*";
+
+ }
+
+//This returns output of loop
+   return(mystar);
+
+};
+let stars = starString(8);
+console.log(stars);
+
+
+function drawStars(x){
+
+//This sets i to 0 and creates loop
+//This determines if a number
+//This passes loop to starString
+
+ for(let i = 0; i < x.length; i++){ 
+ if (typeof x[i] === 'number'){
+  console.log(starString(x[i]));
+   }
+
+//This determines if a name instead of number
+ if (typeof x[i] != 'number'){
+
+//This declares the first letter of the name.
+//Enter loop for the name.
+//Convert first letter to lower case.
+   let letter = ((x[i])[0]);
+   for(let z = 1; z < x[i].length; z++){ 
+   letter = letter + ((x[i])[0]);
+
+    }
+     console.log(letter.toLowerCase());
+   }
+ }
+
+};
+let x = [4, "Tom", 1, "Michael", 5, 7, "Jimmy Smith"];
+drawStars(x);
+
+
+</script>
+</head>
+<body>
+</body>
+</html>
