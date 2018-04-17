@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
+  <title>Document</title>
+  <div id="addName">
+<h2>test </h2>
+  </div>
+</head>
+<body>
+    <button id="button1">Click or Hover</button>
+ <script>
+
+$Dojo("button1").click(function() { console.log("clicked") });
+$Dojo("button1").hover(function() { console.log("hover") });
+
+function $Dojo(id) {
+    this.button1 = document.getElementById(id);
+    
+    this.click = function (callback) {
+      if  (this.button1.addEventListener("click", callback)) {
+        console.log( "This button was clicked!" );
+      }
+      
+    }
+  
+    this.hover = function (hoverin, hoverout) {
+
+        this.button1.addEventListener("mouseover", hoverin);
+        console.log( "This button was hoveredin!" );
+      
+        this.button1.addEventListener("mouseout", hoverout);
+        console.log( "This button was hoveredout!" );
+      
+    }
+    
+    return this; 
+};
+
+//  $(document).ready(
+//    function(){
+//      $('button').click(function(){
+        // as soon as the AJAX request returns, displayName is invoked and passed data!
+        //https://api.jquery.com/jquery.get/
+//        $.get('https://api.github.com/users/codeds2017', whatever);
+//      });
+//    function whatever(data){
+
+//         $('body').append("<h1>"+data.login+"</h1>");
+ 
+//         console.log(data)
+//        
+//      }
+//    }
+//  );
+  </script>
+</body>
+</html>
