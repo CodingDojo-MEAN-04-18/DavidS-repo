@@ -20,15 +20,11 @@
         $.get('https://api.github.com/users/codeds2017', whatever);
       });
     function whatever(data){
-        if (data){
-  //        $('body').append("<p>"+data+"</p>");
-  //   let htmlStr = `<h2 id='name'> ${data} </h2>`  
-  //    document.getElementById('addName').innerHTML = htmlStr;
- //       $('body').append("<p>"+data+"</p>");
-         $('body').append("<h1>"+console.log(data)+"</h1>");
+
+         $('body').append("<h1>"+data.login+"</h1>");
  
          console.log(data)
-        }
+        
       }
     }
   );
