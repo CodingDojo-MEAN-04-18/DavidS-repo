@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Survey Form</title>
+</head>
+<body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type ="text/javascript"> </script>
+	<script>
+
+        $(document).ready(function (){
+			// triggers the connection event in our server!
+		var socket = io.connect();
+
+		
+		//green socket
+   		    $(document).on('click', '#button1', function (e) {		
+			console.log('click');
+                socket.emit('changeBgColor', {color: 'green'});
+       	         e.preventDefault();
+			});
+
+		//blue socket
+			$(document).on('click', '#button2', function (e) {	
+			console.log('click');
+                socket.emit('changeBgColor', {color: 'blue'});
+       	         e.preventDefault();
+			});
+
+		//pink socket
+			$(document).on('click', '#button3', function (e) {	
+			console.log('click');
+                socket.emit('changeBgColor', {color: 'pink'});
+       	         e.preventDefault();
+			});
+
+
+            socket.on('changeBgColorEveryWhere', function (color) {
+                console.log(color);
+                $('body').css('background', color);
+			});
+		});
+
+
+	   </script>
+ <h1>Hello World</h1>
+<button id="button1">Green</button>
+<button id="button2">Blue</button>
+<button id="button3">Pink</button>
+</body>
+</html>
