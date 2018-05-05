@@ -1,0 +1,500 @@
+> db.users.update({name: "Trey"}, {location: "Mountain View""})
+2018-05-04T19:00:14.919-0700 E QUERY    [thread1] SyntaxError: unterminated string literal @(shell):1:58
+> db.users.update({name: "Trey"}, {location: "Mountain View"})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.users.find().pretty()
+{
+        "_id" : ObjectId("5aed0cbf1f259337ef582670"),
+        "location" : "Mountain View"
+}
+{
+        "_id" : ObjectId("5aed0ecd1f259337ef582671"),
+        "name" : "Trey",
+        "belt" : "black",
+        "status" : "awesome"
+}
+{
+        "_id" : ObjectId("5aed0ed71f259337ef582672"),
+        "name" : "David",
+        "belt" : "black",
+        "status" : "awesome"
+}
+> db.users.find({name: "Trey"}).pretty()
+{
+        "_id" : ObjectId("5aed0ecd1f259337ef582671"),
+        "name" : "Trey",
+        "belt" : "black",
+        "status" : "awesome"
+}
+> db.users.update({name: "Trey"}, {location: "Mountain View"})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+>
+>
+> db.users.find({name: "Trey"}).pretty()
+> db.users.find().pretty()
+{
+        "_id" : ObjectId("5aed0cbf1f259337ef582670"),
+        "location" : "Mountain View"
+}
+{
+        "_id" : ObjectId("5aed0ecd1f259337ef582671"),
+        "location" : "Mountain View"
+}
+{
+        "_id" : ObjectId("5aed0ed71f259337ef582672"),
+        "name" : "David",
+        "belt" : "black",
+        "status" : "awesome"
+}
+> db.users.find({name: "Trey"}).pretty()
+> db.users.find().pretty()
+{
+        "_id" : ObjectId("5aed0cbf1f259337ef582670"),
+        "location" : "Mountain View"
+}
+{
+        "_id" : ObjectId("5aed0ecd1f259337ef582671"),
+        "location" : "Mountain View"
+}
+{
+        "_id" : ObjectId("5aed0ed71f259337ef582672"),
+        "name" : "David",
+        "belt" : "black",
+        "status" : "awesome"
+}
+> db.users.update({location: "Mountain View"}, {$set: {name: "Trey"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.users.find().pretty()
+{
+        "_id" : ObjectId("5aed0cbf1f259337ef582670"),
+        "location" : "Mountain View",
+        "name" : "Trey"
+}
+{
+        "_id" : ObjectId("5aed0ecd1f259337ef582671"),
+        "location" : "Mountain View"
+}
+{
+        "_id" : ObjectId("5aed0ed71f259337ef582672"),
+        "name" : "David",
+        "belt" : "black",
+        "status" : "awesome"
+}
+> show collections
+users
+> use my_first_db
+switched to db my_first_db
+> show collections
+> db.createCollection('students')
+{ "ok" : 1 }
+> db.my_first_db.insert({name: "Adam", home_state: "California", lucky_number: "7", birthday: {month: "1", day: "1", yea
+r: "1980"}})
+WriteResult({ "nInserted" : 1 })
+> db.my_first_db.insert({name: "Charles", home_state: "Texas", lucky_number: "7", birthday: {month: "2", day: "12", year
+: "1985"}})
+WriteResult({ "nInserted" : 1 })
+> db.my_first_db.insert({name: "David", home_state: "Florida", lucky_number: "7", birthday: {month: "7", day: "30", year
+: "1990"}})
+WriteResult({ "nInserted" : 1 })
+> db.my_first_db.insert({name: "Taylor", home_state: "New York", lucky_number: "4", birthday: {month: "6", day: "15", ye
+ar: "1940"}})
+WriteResult({ "nInserted" : 1 })
+> db.my_first_db.insert({name: "Zack", home_state: "Washington", lucky_number: "7", birthday: {month: "2", day: "20", ye
+ar: "1975"}})
+WriteResult({ "nInserted" : 1 })
+> db.my_fisrt_db.find().pretty()
+> db.my_first_db.find().pretty()
+{
+        "_id" : ObjectId("5aed19121f259337ef582673"),
+        "name" : "Adam",
+        "home_state" : "California",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "1",
+                "day" : "1",
+                "year" : "1980"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582674"),
+        "name" : "Charles",
+        "home_state" : "Texas",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "2",
+                "day" : "12",
+                "year" : "1985"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582675"),
+        "name" : "David",
+        "home_state" : "Florida",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "7",
+                "day" : "30",
+                "year" : "1990"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582676"),
+        "name" : "Taylor",
+        "home_state" : "New York",
+        "lucky_number" : "4",
+        "birthday" : {
+                "month" : "6",
+                "day" : "15",
+                "year" : "1940"
+        }
+}
+{
+        "_id" : ObjectId("5aed191a1f259337ef582677"),
+        "name" : "Zack",
+        "home_state" : "Washington",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "2",
+                "day" : "20",
+                "year" : "1975"
+        }
+}
+> db.my_first_db.find({lucky_number: {$gt: 3}})
+> db.my_first_db.find({lucky_number: {$gt: "3"}})
+{ "_id" : ObjectId("5aed19121f259337ef582673"), "name" : "Adam", "home_state" : "California", "lucky_number" : "7", "bir
+thday" : { "month" : "1", "day" : "1", "year" : "1980" } }
+{ "_id" : ObjectId("5aed19191f259337ef582674"), "name" : "Charles", "home_state" : "Texas", "lucky_number" : "7", "birth
+day" : { "month" : "2", "day" : "12", "year" : "1985" } }
+{ "_id" : ObjectId("5aed19191f259337ef582675"), "name" : "David", "home_state" : "Florida", "lucky_number" : "7", "birth
+day" : { "month" : "7", "day" : "30", "year" : "1990" } }
+{ "_id" : ObjectId("5aed19191f259337ef582676"), "name" : "Taylor", "home_state" : "New York", "lucky_number" : "4", "bir
+thday" : { "month" : "6", "day" : "15", "year" : "1940" } }
+{ "_id" : ObjectId("5aed191a1f259337ef582677"), "name" : "Zack", "home_state" : "Washington", "lucky_number" : "7", "bir
+thday" : { "month" : "2", "day" : "20", "year" : "1975" } }
+> db.my_first_db.find({lucky_number: {$lte: "10"}})
+> db.my_first_db.find({lucky_number: {$gt: "3"}})
+{ "_id" : ObjectId("5aed19121f259337ef582673"), "name" : "Adam", "home_state" : "California", "lucky_number" : "7", "bir
+thday" : { "month" : "1", "day" : "1", "year" : "1980" } }
+{ "_id" : ObjectId("5aed19191f259337ef582674"), "name" : "Charles", "home_state" : "Texas", "lucky_number" : "7", "birth
+day" : { "month" : "2", "day" : "12", "year" : "1985" } }
+{ "_id" : ObjectId("5aed19191f259337ef582675"), "name" : "David", "home_state" : "Florida", "lucky_number" : "7", "birth
+day" : { "month" : "7", "day" : "30", "year" : "1990" } }
+{ "_id" : ObjectId("5aed19191f259337ef582676"), "name" : "Taylor", "home_state" : "New York", "lucky_number" : "4", "bir
+thday" : { "month" : "6", "day" : "15", "year" : "1940" } }
+{ "_id" : ObjectId("5aed191a1f259337ef582677"), "name" : "Zack", "home_state" : "Washington", "lucky_number" : "7", "bir
+thday" : { "month" : "2", "day" : "20", "year" : "1975" } }
+> db.my_first_db.find({lucky_number: {$lte: "3"}})
+> db.my_first_db.find({lucky_number: {$lte: "10"}})
+> db.my_first_db.find({lucky_number: {$lte: "100"}})
+> db.my_first_db.find({lucky_number: {$lt: "100"}})
+> db.my_first_db.find({lucky_number: {$lt: "1000000"}})
+> db.my_first_db.find({lucky_number: {$gt: "1000000"}})
+{ "_id" : ObjectId("5aed19121f259337ef582673"), "name" : "Adam", "home_state" : "California", "lucky_number" : "7", "bir
+thday" : { "month" : "1", "day" : "1", "year" : "1980" } }
+{ "_id" : ObjectId("5aed19191f259337ef582674"), "name" : "Charles", "home_state" : "Texas", "lucky_number" : "7", "birth
+day" : { "month" : "2", "day" : "12", "year" : "1985" } }
+{ "_id" : ObjectId("5aed19191f259337ef582675"), "name" : "David", "home_state" : "Florida", "lucky_number" : "7", "birth
+day" : { "month" : "7", "day" : "30", "year" : "1990" } }
+{ "_id" : ObjectId("5aed19191f259337ef582676"), "name" : "Taylor", "home_state" : "New York", "lucky_number" : "4", "bir
+thday" : { "month" : "6", "day" : "15", "year" : "1940" } }
+{ "_id" : ObjectId("5aed191a1f259337ef582677"), "name" : "Zack", "home_state" : "Washington", "lucky_number" : "7", "bir
+thday" : { "month" : "2", "day" : "20", "year" : "1975" } }
+> db.my_first_db.find({lucky_number: {$gte: "1000000"}})
+{ "_id" : ObjectId("5aed19121f259337ef582673"), "name" : "Adam", "home_state" : "California", "lucky_number" : "7", "bir
+thday" : { "month" : "1", "day" : "1", "year" : "1980" } }
+{ "_id" : ObjectId("5aed19191f259337ef582674"), "name" : "Charles", "home_state" : "Texas", "lucky_number" : "7", "birth
+day" : { "month" : "2", "day" : "12", "year" : "1985" } }
+{ "_id" : ObjectId("5aed19191f259337ef582675"), "name" : "David", "home_state" : "Florida", "lucky_number" : "7", "birth
+day" : { "month" : "7", "day" : "30", "year" : "1990" } }
+{ "_id" : ObjectId("5aed19191f259337ef582676"), "name" : "Taylor", "home_state" : "New York", "lucky_number" : "4", "bir
+thday" : { "month" : "6", "day" : "15", "year" : "1940" } }
+{ "_id" : ObjectId("5aed191a1f259337ef582677"), "name" : "Zack", "home_state" : "Washington", "lucky_number" : "7", "bir
+thday" : { "month" : "2", "day" : "20", "year" : "1975" } }
+> db.my_first_db.find({lucky_number: {$gte: "1"}})
+{ "_id" : ObjectId("5aed19121f259337ef582673"), "name" : "Adam", "home_state" : "California", "lucky_number" : "7", "bir
+thday" : { "month" : "1", "day" : "1", "year" : "1980" } }
+{ "_id" : ObjectId("5aed19191f259337ef582674"), "name" : "Charles", "home_state" : "Texas", "lucky_number" : "7", "birth
+day" : { "month" : "2", "day" : "12", "year" : "1985" } }
+{ "_id" : ObjectId("5aed19191f259337ef582675"), "name" : "David", "home_state" : "Florida", "lucky_number" : "7", "birth
+day" : { "month" : "7", "day" : "30", "year" : "1990" } }
+{ "_id" : ObjectId("5aed19191f259337ef582676"), "name" : "Taylor", "home_state" : "New York", "lucky_number" : "4", "bir
+thday" : { "month" : "6", "day" : "15", "year" : "1940" } }
+{ "_id" : ObjectId("5aed191a1f259337ef582677"), "name" : "Zack", "home_state" : "Washington", "lucky_number" : "7", "bir
+thday" : { "month" : "2", "day" : "20", "year" : "1975" } }
+> db.my_first_db.find({lucky_number: {$gte: 1}})
+> db.my_first_db.find().pretty()
+{
+        "_id" : ObjectId("5aed19121f259337ef582673"),
+        "name" : "Adam",
+        "home_state" : "California",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "1",
+                "day" : "1",
+                "year" : "1980"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582674"),
+        "name" : "Charles",
+        "home_state" : "Texas",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "2",
+                "day" : "12",
+                "year" : "1985"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582675"),
+        "name" : "David",
+        "home_state" : "Florida",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "7",
+                "day" : "30",
+                "year" : "1990"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582676"),
+        "name" : "Taylor",
+        "home_state" : "New York",
+        "lucky_number" : "4",
+        "birthday" : {
+                "month" : "6",
+                "day" : "15",
+                "year" : "1940"
+        }
+}
+{
+        "_id" : ObjectId("5aed191a1f259337ef582677"),
+        "name" : "Zack",
+        "home_state" : "Washington",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "2",
+                "day" : "20",
+                "year" : "1975"
+        }
+}
+> db.my_first_db.update({name: "Taylor"}, {$set: {lucky_number: 5,}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.my_first_db.find().pretty()
+{
+        "_id" : ObjectId("5aed19121f259337ef582673"),
+        "name" : "Adam",
+        "home_state" : "California",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "1",
+                "day" : "1",
+                "year" : "1980"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582674"),
+        "name" : "Charles",
+        "home_state" : "Texas",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "2",
+                "day" : "12",
+                "year" : "1985"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582675"),
+        "name" : "David",
+        "home_state" : "Florida",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "7",
+                "day" : "30",
+                "year" : "1990"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582676"),
+        "name" : "Taylor",
+        "home_state" : "New York",
+        "lucky_number" : 5,
+        "birthday" : {
+                "month" : "6",
+                "day" : "15",
+                "year" : "1940"
+        }
+}
+{
+        "_id" : ObjectId("5aed191a1f259337ef582677"),
+        "name" : "Zack",
+        "home_state" : "Washington",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "2",
+                "day" : "20",
+                "year" : "1975"
+        }
+}
+> db.my_first_db.find({lucky_number: {$lte: 10}})
+{ "_id" : ObjectId("5aed19191f259337ef582676"), "name" : "Taylor", "home_state" : "New York", "lucky_number" : 5, "birth
+day" : { "month" : "6", "day" : "15", "year" : "1940" } }
+> db.my_first_db.update({name: "Taylor"}, {$set: {lucky_number: 5,}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 0 })
+> db.my_first_db.update({name: "Taylor"}, {$set: {interests: "coding, "brunch", "MondgoDB"}})
+2018-05-04T20:59:58.326-0700 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:69
+> db.my_first_db.update({name: "Taylor"}, {$set: {interests: "coding", "brunch", "MondgoDB"}})
+2018-05-04T21:00:07.172-0700 E QUERY    [thread1] SyntaxError: missing : after property id @(shell):1:77
+> db.my_first_db.update({name: "Taylor"}, {$set: {interests: ["coding", "brunch", "MongoDB"]}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.my_first_db.find().pretty()
+{
+        "_id" : ObjectId("5aed19121f259337ef582673"),
+        "name" : "Adam",
+        "home_state" : "California",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "1",
+                "day" : "1",
+                "year" : "1980"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582674"),
+        "name" : "Charles",
+        "home_state" : "Texas",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "2",
+                "day" : "12",
+                "year" : "1985"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582675"),
+        "name" : "David",
+        "home_state" : "Florida",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "7",
+                "day" : "30",
+                "year" : "1990"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582676"),
+        "name" : "Taylor",
+        "home_state" : "New York",
+        "lucky_number" : 5,
+        "birthday" : {
+                "month" : "6",
+                "day" : "15",
+                "year" : "1940"
+        },
+        "interests" : [
+                "coding",
+                "brunch",
+                "MongoDB"
+        ]
+}
+{
+        "_id" : ObjectId("5aed191a1f259337ef582677"),
+        "name" : "Zack",
+        "home_state" : "Washington",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "2",
+                "day" : "20",
+                "year" : "1975"
+        }
+}
+> db.my_first_db.remove({name: "Charles"})
+WriteResult({ "nRemoved" : 1 })
+> db.my_first_db.find().pretty()
+{
+        "_id" : ObjectId("5aed19121f259337ef582673"),
+        "name" : "Adam",
+        "home_state" : "California",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "1",
+                "day" : "1",
+                "year" : "1980"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582675"),
+        "name" : "David",
+        "home_state" : "Florida",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "7",
+                "day" : "30",
+                "year" : "1990"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582676"),
+        "name" : "Taylor",
+        "home_state" : "New York",
+        "lucky_number" : 5,
+        "birthday" : {
+                "month" : "6",
+                "day" : "15",
+                "year" : "1940"
+        },
+        "interests" : [
+                "coding",
+                "brunch",
+                "MongoDB"
+        ]
+}
+{
+        "_id" : ObjectId("5aed191a1f259337ef582677"),
+        "name" : "Zack",
+        "home_state" : "Washington",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "2",
+                "day" : "20",
+                "year" : "1975"
+        }
+}
+> db.my_first_db.remove({lucky_number: {$gt: 4}})
+WriteResult({ "nRemoved" : 1 })
+> db.my_first_db.find().pretty()
+{
+        "_id" : ObjectId("5aed19121f259337ef582673"),
+        "name" : "Adam",
+        "home_state" : "California",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "1",
+                "day" : "1",
+                "year" : "1980"
+        }
+}
+{
+        "_id" : ObjectId("5aed19191f259337ef582675"),
+        "name" : "David",
+        "home_state" : "Florida",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "7",
+                "day" : "30",
+                "year" : "1990"
+        }
+}
+{
+        "_id" : ObjectId("5aed191a1f259337ef582677"),
+        "name" : "Zack",
+        "home_state" : "Washington",
+        "lucky_number" : "7",
+        "birthday" : {
+                "month" : "2",
+                "day" : "20",
+                "year" : "1975"
+        }
+}
+>
